@@ -3,32 +3,41 @@ import type { MatrixEntry, WeekTuple, WorkingSet } from '$lib/calculator'
 
 interface Props {
 	matrix: Array<MatrixEntry<WeekTuple<WorkingSet>>>
-	plans?: Array<WeekTuple<boolean[]>>
+	workouts?: Array<WeekTuple<boolean[]>>
 	onchange?: VoidFunction
+	disabled?: boolean
 }
 
-const { matrix, plans = $bindable(), onchange }: Props = $props()
+const { matrix, workouts = $bindable(), onchange, disabled }: Props = $props()
 
 const toggle = (week: number, day: number, set: number) => {
-	if (!plans || !onchange) {
+	if (!workouts || !onchange) {
 		return
 	}
 
-	plans[week][day][set] = !plans[week][day][set]
+	workouts[week][day][set] = !workouts[week][day][set]
 	onchange()
 }
 
 const isDayResolved = (week: number, day: number) => {
-	if (!plans) {
+	if (!workouts) {
 		return false
 	}
 
-	return !plans[week][day].some((v) => !v)
+	return !workouts[week][day].some((v) => !v)
+}
+
+const isWeekResolved = (week: number) => {
+	if (!workouts) {
+		return false
+	}
+
+	return workouts[week].every((day, n) => isDayResolved(week, n))
 }
 </script>
 
 {#each matrix as week, k (week.id)}
-	<section>
+	<section class:resolved={isWeekResolved(k)}>
 		<h2>Week {k + 1}</h2>
 		<div class="wdays">
 			{#each week.data as day, n (day.id)}
@@ -47,18 +56,20 @@ const isDayResolved = (week: number, day: number) => {
 						</div>
 					</header>
 
-					{#if plans}
+					{#if workouts}
 						<div class="workingsets">
-							{#each plans[k][n] as kex, x (x)}
+							{#each workouts[k][n] as kex, x (x)}
 								<input
 									type="checkbox"
 									checked={kex}
-									onchange={() => {
-										toggle(k, n, x)
-										// console.log(`Change:`, k, n, x, kex)
-									}}
+									{disabled}
+									onchange={() => toggle(k, n, x)}
 								/>
 							{/each}
+
+							{#if isDayResolved(k, n)}
+								<span class="donzo">✓ donzo</span>
+							{/if}
 						</div>
 					{/if}
 				</div>
@@ -108,15 +119,28 @@ section {
 	gap: 0.5em;
 }
 
+section.resolved h2::before {
+	content: '✓';
+	color: var(--color-success);
+	margin-inline-end: var(--gutter-block);
+}
+
+.day {
+	min-width: 252px;
+}
+
 .day header {
 	display: flex;
 	gap: 1em;
 	align-items: end;
 }
 
-.day header.resolved::after {
-	content: '✓ donzo';
-	color: var(--color-highlight);
-	margin-inline-start: auto;
+header.resolved {
+	color: var(--text-dim);
+}
+
+.donzo {
+	color: var(--color-success);
+	line-height: 1;
 }
 </style>

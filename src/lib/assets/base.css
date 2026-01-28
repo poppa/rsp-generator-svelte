@@ -6,12 +6,23 @@
 	--color-highlight: rgb(255 155 81);
 	--color-light: rgb(191, 201, 209);
 	--color-lighter: rgb(235, 240, 240);
+	--color-success: rgb(12, 150, 12);
+	--succes-bg: rgb(195, 214, 195);
 
 	--text: var(--color-dark);
 	--text-soft: lch(from var(--text) calc(l + 20) c h);
 	--text-dim: lch(from var(--text) calc(l + 40) c h);
+	--text-light: lch(from var(--text) calc(l + 80) c h);
 
 	--form-control-color: var(--color-highlight);
+
+	--border-radius: 0.2rem;
+	--input-border-color: var(--color-dark);
+	--input-disabled-border-color: lch(from var(--color-dark) calc(l + 30) c h);
+
+	--input-padding-inline: 0.5rem;
+	--input-padding-block: calc(var(--input-padding-inline) / 2);
+	--input-padding: var(--input-padding-block) var(--input-padding-inline);
 }
 
 *,
@@ -89,4 +100,22 @@ input[type='checkbox']:checked::before {
 input[type='checkbox']:focus-visible {
 	outline: max(2px, 0.15em) solid currentColor;
 	outline-offset: max(2px, 0.15em);
+}
+
+[contenteditable='true'] {
+	outline: 1px solid var(--color-highlight);
+}
+
+button {
+	border: 1px solid var(--input-border-color);
+	border-radius: var(--border-radius);
+	padding: var(--input-padding);
+}
+
+button:disabled {
+	border-color: var(--input-disabled-border-color);
+}
+
+button:focus-visible {
+	outline: 2px solid var(--color-highlight);
 }

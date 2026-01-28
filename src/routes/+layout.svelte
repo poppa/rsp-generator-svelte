@@ -56,9 +56,4 @@ header {
 	background-color: var(--color-dark);
 	color: var(--color-highlight);
 }
-
-main {
-	padding: var(--gutter);
-	background-color: var(--color-lighter);
-}
 </style>

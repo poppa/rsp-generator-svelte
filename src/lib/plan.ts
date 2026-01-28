@@ -5,13 +5,11 @@ const DbName = 'rsp'
 
 export interface Plan {
 	workingSets: Array<MatrixEntry<WeekTuple<WorkingSet>>>
-	plans: Array<WeekTuple<boolean[]>>
+	workouts: Array<WeekTuple<boolean[]>>
 	name: string
 	date: number
 	id: string
 }
-
-export type UninitializedPlan = Omit<Plan, 'id'> & { id?: string }
 
 export type Plans = Record<string, Plan>
 
@@ -25,7 +23,7 @@ export function loadPlan(id: string) {
 }
 
 export function createPlan(max: number, ws: Plan['workingSets']) {
-	const plans: Plan['plans'] = []
+	const plans: Plan['workouts'] = []
 
 	for (const week of ws) {
 		const tuple = week.data.map((w) =>
@@ -36,13 +34,11 @@ export function createPlan(max: number, ws: Plan['workingSets']) {
 
 	const myPlan: Plan = {
 		workingSets: ws,
-		plans,
+		workouts: plans,
 		name: `${max} kg Max`,
 		id: crypto.randomUUID(),
 		date: Date.now()
 	}
-
-	console.log(`My Plan:`, myPlan)
 
 	return savePlan(myPlan)
 }
@@ -53,4 +49,13 @@ export function savePlan(plan: Plan) {
 	localStorage.setItem(DbName, JSON.stringify(plans))
 
 	return plan
+}
+
+export function deletePlan(id: string) {
+	const plans = loadPlans()
+	console.log(`Drop %o`, id)
+	console.log(`Plans: %O`, plans)
+	delete plans[id]
+
+	localStorage.setItem(DbName, JSON.stringify(plans))
 }
