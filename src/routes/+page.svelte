@@ -6,7 +6,7 @@ import { resolve } from '$app/paths'
 import { calculateMatrix } from '$lib/calculator'
 import Content from '$lib/comp/Content.svelte'
 import Matrix from '$lib/comp/Matrix.svelte'
-import { createPlan, loadPlans } from '$lib/plan'
+import { createPlan, loadPlans, percentageDone } from '$lib/plan'
 import { formatDate } from '$lib/utils'
 
 const plans = loadPlans()
@@ -35,10 +35,11 @@ const savePlan = (e: Event) => {
 	<ul>
 		{#each Object.entries(plans) as [id, plan] (id)}
 			<li>
-				<a href={resolve(`/view/`) + `?id=${id}`}>{plan.name}</a> &bull; {formatDate(
-					plan.date,
-					{ options: { dateStyle: 'short' } }
-				)}
+				<div><span class="percentage">{percentageDone(plan)}%</span></div>
+				<a href={resolve(`/view/`) + `?id=${id}`}>{plan.name}</a> &bull;
+				<span class="date">
+					{formatDate(plan.date, { options: { dateStyle: 'short' } })}
+				</span>
 			</li>
 		{:else}
 			<li>You have no programs yet</li>
@@ -93,6 +94,17 @@ const savePlan = (e: Event) => {
 		display: grid;
 		grid-template-columns: 60% auto;
 	}
+}
+
+li {
+	display: flex;
+	gap: var(--gutter-block);
+}
+
+.percentage {
+	display: inline-block;
+	width: 40px;
+	text-align: end;
 }
 
 input[type='text'] {

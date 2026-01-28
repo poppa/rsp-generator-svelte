@@ -59,3 +59,25 @@ export function deletePlan(id: string) {
 
 	localStorage.setItem(DbName, JSON.stringify(plans))
 }
+
+export function percentageDone(plan: Plan) {
+	const data = { total: 0, checked: 0 }
+
+	if (!plan.workingSets) {
+		return 0
+	}
+
+	for (const week of plan.workingSets) {
+		for (const day of week.data) {
+			data.total += day.sets
+		}
+	}
+
+	for (const w of plan.workouts) {
+		for (const d of w) {
+			data.checked += d.reduce((p, c) => (c ? p + 1 : p), 0)
+		}
+	}
+
+	return Math.round((data.checked / data.total) * 100)
+}

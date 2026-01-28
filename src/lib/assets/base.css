@@ -23,6 +23,8 @@
 	--input-padding-inline: 0.5rem;
 	--input-padding-block: calc(var(--input-padding-inline) / 2);
 	--input-padding: var(--input-padding-block) var(--input-padding-inline);
+
+	--link-color: lch(from var(--color-highlight) calc(l - 25) c h);
 }
 
 *,
@@ -123,4 +125,12 @@ button:focus-visible {
 .notice {
 	margin: 0;
 	color: var(--text-soft);
+}
+
+a {
+	color: var(--link-color);
+}
+
+a:hover {
+	color: lch(from var(--link-color) calc(l - 10) c h);
 }
