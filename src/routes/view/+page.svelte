@@ -7,6 +7,7 @@ import Dialog from '$lib/comp/Dialog.svelte'
 import Matrix from '$lib/comp/Matrix.svelte'
 import { deletePlan, loadPlan, savePlan } from '$lib/plan.js'
 import type { Maybe } from '$lib/type-types'
+import { formatDate } from '$lib/utils'
 import { error } from '@sveltejs/kit'
 
 const id = $state(page.url.searchParams.get('id') ?? '')
@@ -86,7 +87,7 @@ let dateElem: Maybe<HTMLInputElement> = $state(undefined)
 					bind:this={dateElem}
 				/>
 			{:else}
-				{plan.name} - {date.toISOString().split('T')[0]}
+				{plan.name} - {formatDate(plan.date)}
 			{/if}
 		</h2>
 		<div class="actions">
@@ -127,6 +128,7 @@ let dateElem: Maybe<HTMLInputElement> = $state(undefined)
 	display: flex;
 	justify-content: space-between;
 	gap: var(--gutter);
+	/* margin-block-end: var(--gutter); */
 }
 
 @media screen and (max-width: 800px) {

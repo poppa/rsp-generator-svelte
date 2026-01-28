@@ -52,7 +52,11 @@ const isWeekResolved = (week: number) => {
 										: day.calculatedWeight.toFixed(1)}</b
 								> kg,
 							{/if}
-							<b>{day.sets}</b> sets of <b>{day.reps}</b> reps
+							{#if day.sets === 1 && day.reps === 1}
+								<b>1</b> rep of your <strong>new max</strong>
+							{:else}
+								<b>{day.sets}</b> sets of <b>{day.reps}</b> reps
+							{/if}
 						</div>
 					</header>
 
