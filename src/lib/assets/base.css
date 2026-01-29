@@ -48,6 +48,7 @@ body {
 		sans-serif;
 
 	color: var(--text);
+	font-size: 1em;
 }
 
 html,
@@ -133,4 +134,18 @@ a {
 
 a:hover {
 	color: lch(from var(--link-color) calc(l - 10) c h);
+}
+
+input,
+button,
+textarea {
+	font-size: 0.9rem;
+}
+
+@media only screen and (hover: none) and (pointer: coarse) {
+	input,
+	button,
+	textarea {
+		font-size: 16px;
+	}
 }

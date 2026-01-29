@@ -126,7 +126,7 @@ const baseMatrix: Array<WeekTuple<WorkLoad>> = [
 		},
 		{
 			intencity: Percentage.P80,
-			reps: 3,
+			reps: 2,
 			sets: 6
 		},
 		{

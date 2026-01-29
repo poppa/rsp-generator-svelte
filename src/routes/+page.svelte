@@ -53,9 +53,11 @@ const savePlan = (e: Event) => {
 
 <Content style="dark" type="text">
 	<p>
-		The "Russian" Squat Program (or Routine) is originally meant for increasing
-		your squat, but it can effectively be used for deadlift as well. This
-		program is primarily for building strength, not size.
+		The <strong>Russian Squat Program</strong>
+		<em>(also called Old School Squat Routine)</em>
+		is a classic high-frequency, high-volume squat cycle (usually 6 weeks) designed
+		to rapidly increase your back squat strength by squatting three days per week
+		with planned progression in weight and volume.
 	</p>
 	<p>
 		Fill in your current <em><b>1</b> rep max</em> below to generate the

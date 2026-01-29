@@ -120,7 +120,7 @@ section {
 .workingsets {
 	padding: var(--gutter-block) 0;
 	display: flex;
-	gap: 0.5em;
+	gap: 0.7em;
 }
 
 section.resolved h2::before {
