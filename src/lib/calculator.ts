@@ -29,111 +29,39 @@ class Percentage {
 const baseMatrix: Array<WeekTuple<WorkLoad>> = [
 	// week 1
 	[
-		{
-			intencity: Percentage.P80,
-			reps: 2,
-			sets: 6
-		},
-		{
-			intencity: Percentage.P80,
-			reps: 3,
-			sets: 6
-		},
-		{
-			intencity: Percentage.P80,
-			reps: 2,
-			sets: 6
-		}
+		{ intencity: Percentage.P80, reps: 2, sets: 6 },
+		{ intencity: Percentage.P80, reps: 3, sets: 6 },
+		{ intencity: Percentage.P80, reps: 2, sets: 6 }
 	],
 	// Week 2
 	[
-		{
-			intencity: Percentage.P80,
-			reps: 4,
-			sets: 6
-		},
-		{
-			intencity: Percentage.P80,
-			reps: 2,
-			sets: 6
-		},
-		{
-			intencity: Percentage.P80,
-			reps: 5,
-			sets: 6
-		}
+		{ intencity: Percentage.P80, reps: 4, sets: 6 },
+		{ intencity: Percentage.P80, reps: 2, sets: 6 },
+		{ intencity: Percentage.P80, reps: 5, sets: 6 }
 	],
 	// week 3
 	[
-		{
-			intencity: Percentage.P80,
-			reps: 2,
-			sets: 6
-		},
-		{
-			intencity: Percentage.P80,
-			reps: 6,
-			sets: 6
-		},
-		{
-			intencity: Percentage.P80,
-			reps: 2,
-			sets: 6
-		}
+		{ intencity: Percentage.P80, reps: 2, sets: 6 },
+		{ intencity: Percentage.P80, reps: 6, sets: 6 },
+		{ intencity: Percentage.P80, reps: 2, sets: 6 }
 	],
 	// week 4
 	[
-		{
-			intencity: Percentage.P85,
-			reps: 5,
-			sets: 5
-		},
-		{
-			intencity: Percentage.P80,
-			reps: 2,
-			sets: 6
-		},
-		{
-			intencity: Percentage.P90,
-			reps: 4,
-			sets: 4
-		}
+		{ intencity: Percentage.P85, reps: 5, sets: 5 },
+		{ intencity: Percentage.P80, reps: 2, sets: 6 },
+		{ intencity: Percentage.P90, reps: 4, sets: 4 }
 	],
 	// week 5
 	[
-		{
-			intencity: Percentage.P80,
-			reps: 2,
-			sets: 6
-		},
-		{
-			intencity: Percentage.P95,
-			reps: 3,
-			sets: 3
-		},
-		{
-			intencity: Percentage.P80,
-			reps: 2,
-			sets: 6
-		}
+		{ intencity: Percentage.P80, reps: 2, sets: 6 },
+		{ intencity: Percentage.P95, reps: 3, sets: 3 },
+		{ intencity: Percentage.P80, reps: 2, sets: 6 }
 	],
 	// week 6
 	[
-		{
-			intencity: Percentage.P100,
-			reps: 2,
-			sets: 2
-		},
-		{
-			intencity: Percentage.P80,
-			reps: 2,
-			sets: 6
-		},
-		{
-			intencity: Percentage.P105,
-			reps: 1,
-			sets: 1
-		}
+		{ intencity: Percentage.P100, reps: 2, sets: 2 },
+		{ intencity: Percentage.P80, reps: 2, sets: 6 },
+		{ intencity: Percentage.P105, reps: 1, sets: 1 }
 	]
 ]
 
