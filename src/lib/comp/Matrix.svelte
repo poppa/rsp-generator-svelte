@@ -46,11 +46,8 @@ const isWeekResolved = (week: number) => {
 						<h3>Day {n + 1}</h3>
 						<div>
 							{#if day.calculatedWeight}
-								<b
-									>{Math.round(day.calculatedWeight) === day.calculatedWeight
-										? day.calculatedWeight
-										: day.calculatedWeight.toFixed(1)}</b
-								> kg,
+								{@const cw = 2.5 * Math.round(day.calculatedWeight / 2.5)}
+								<b>{Math.round(cw) === cw ? cw : cw.toFixed(1)}</b> kg,
 							{/if}
 							{#if day.sets === 1 && day.reps === 1}
 								<b>1</b> rep of your <strong>new max</strong>
